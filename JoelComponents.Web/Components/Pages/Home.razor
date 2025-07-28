@@ -1,5 +1,63 @@
 ﻿@page "/"
+@using JoelComponents.Services
+@using JoelComponents.UI
+@using JoelComponents.Components.Layout
+@inject CatApiService CatApiService
+@inject PicSumService PicSumService
+@inject PersonNotExistService PersonNotExistService
+@inject IHttpClientFactory HttpClientFactory
 
 <PageTitle>Home</PageTitle>
 
 <h3>Hello Progress!</h3>
+
+<Menu OnClick="EventActions" OnKeyEnter="EventActions">
+    <MenuItems>
+        <MenuItem Text="Image API:s">
+            <MenuItems>
+                <MenuItem Tag="CatLolz" Text="Cat images" />
+                <MenuItem Tag="Picsum" Text="Picsum random" />
+                <MenuItem Tag="PersonNotExist" Text="This person does not exist" />
+            </MenuItems>
+        </MenuItem>
+    </MenuItems>
+</Menu>
+
+@if(!string.IsNullOrEmpty(imgUrl))
+{
+    <ImageWithSpinner IsLoading="_isLoading" ImageSrc="@imgUrl" />
+}
+
+@code {
+    private string imgUrl { get; set; } = "https://placehold.co/600x400";
+    private bool _isLoading = false;
+    
+    /// <summary>
+    /// This is just very hackish code for demo purposes :=)
+    /// </summary>
+    /// <param name="item"></param>
+    public async Task EventActions(MenuItem item)
+    {
+        var client = HttpClientFactory.CreateClient();
+        _isLoading = true;
+        await Task.Delay(200);
+        StateHasChanged(); // Notify UI of the change
+
+        switch (item.Tag)
+        {
+            case "CatLolz":
+                imgUrl = await CatApiService.GetImage();
+            break;
+            case "Picsum":
+                imgUrl = await PicSumService.GetImage();
+            break;
+            case "PersonNotExist":
+                imgUrl = await PersonNotExistService.GetImage();
+            break;
+        }
+
+        _isLoading = false;
+        StateHasChanged(); // Notify UI of the change
+    }
+
+}

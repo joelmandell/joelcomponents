@@ -1,10 +1,15 @@
 using JoelComponents.Components;
+using JoelComponents.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<CatApiService>();
+builder.Services.AddSingleton<PicSumService>();
+builder.Services.AddSingleton<PersonNotExistService>();
 
 var app = builder.Build();
 
