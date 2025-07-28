@@ -1,0 +1,32 @@
+﻿.menubar {
+    width: 100%;
+    min-width: fit-content;
+    background-color: #1f2937;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media print
+{
+    .enterfocus {
+        display:none;
+    }
+}
+
+::deep li:hover > ul,
+::deep li:focus-within > ul {
+    display: block;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.enterfocus {
+    display:block;width:0;height:0;padding:0;margin:0;border:0;
+}
+
+
+
+

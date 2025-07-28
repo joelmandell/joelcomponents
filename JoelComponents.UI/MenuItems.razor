@@ -1,0 +1,11 @@
+﻿<ul aria-orientation="@(IsTopMenu ? "horizontal" : "undefined")" 
+    class="@(IsTopMenu ? "main-menu" : "")" role="menu" aria-label="@(ParentMenuItem?.Text ?? "" )">
+    <CascadingValue Name="IsTopMenu" Value="false" TValue="bool">
+        <CascadingValue Name="MenuItems" Value="this" TValue="MenuItems">
+            <CascadingValue Value="Menu" TValue="Menu">
+                @ChildContent
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+</ul>
+

@@ -1,0 +1,33 @@
+﻿@implements IMenuItem
+<li     
+    role="menuitem"
+    @onmouseover:stopPropagation="true"
+    @onmouseover="() => IsFocused = true"
+    tabindex="0"
+    id="@this.ComponentId"
+    @onfocus="HandleFocus"
+    @onmouseenter="HandleMouseEnter" 
+    @onkeydown="HandleKeyUp"
+    @onclick="HandleOnClick"
+    @onkeydown:stopPropagation="true"
+    @onmouseout="@(() => IsFocused = false)"
+    @onmouseleave="HandleMouseLeave" 
+    aria-expanded="@(IsExpanded ? "true" : "false")" 
+    aria-haspopup="@(ChildContent != null ? "true" : "false")"
+    class="@(ChildContent != null ? "has-submenu" : "")"
+    @ref="MenuItemReference"
+>
+    <CascadingValue Name="MenuItem" Value="this" TValue="IMenuItem" IsFixed="true">
+        <div>
+            <span>@Text</span>
+            @if (HasSubmenu)
+            {
+                <span class="arrow" role="presentation" aria-hidden="true"></span>
+            }
+        </div>
+        @if (HasSubmenu)
+        {
+            @ChildContent
+        }
+    </CascadingValue>
+</li>

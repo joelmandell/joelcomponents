@@ -1,0 +1,15 @@
+﻿@page "/failing"
+@using JoelComponents.UI
+
+<PageTitle>Failing Menu</PageTitle>
+
+<ErrorBoundary>
+    <ChildContent>
+        <MenuItems>
+            <MenuItem Text="Hello friend"/>
+        </MenuItems>
+    </ChildContent>
+    <ErrorContent>
+        <p>@context.Message</p>
+    </ErrorContent>
+</ErrorBoundary>

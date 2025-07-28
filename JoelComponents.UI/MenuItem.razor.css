@@ -1,0 +1,46 @@
+﻿li div span {
+    padding: 1rem;
+}
+
+li > div {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #d1d5db;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.arrow {
+    padding: 0;
+    margin-bottom: 0.25rem;
+}
+
+ul ul .has-submenu > li > div {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+ul ul .has-submenu > div > span.arrow::after {
+    content: '▶';
+}
+
+ul ul li:focus > div,
+ul ul li:hover > div {
+    outline:dotted;
+    background-color: #536179;
+}
+
+.has-submenu > div > span.arrow::after {
+    content: '▼';
+    font-size: 0.6em;
+    margin-right: 1rem;
+    transition: transform 0.2s ease;
+}
+
+li:hover,
+li:focus {
+    background-color: #374151;
+    outline: none;
+}

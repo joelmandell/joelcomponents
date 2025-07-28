@@ -1,0 +1,66 @@
+﻿@using JoelComponents.UI
+@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu/>
+    </div>
+    <main>
+        <div>
+            <Menu OnClick="LogText" OnKeyEnter="LogText">
+                <MenuItems>
+                    <MenuItem Text="Start"></MenuItem>
+                    <MenuItem Text="item 1">
+                        <MenuItems>
+                            <MenuItem Text="item 1.1"></MenuItem>
+                            <MenuItem Text="item 1.2">
+                                <MenuItems>
+                                    <MenuItem Text="item 1.2.1">
+                                        <MenuItems>
+                                            <MenuItem Text="item 1.2.1.1">
+                                                <MenuItems>
+                                                    <MenuItem Text="item 1.2.1.1.1">
+                                    
+                                                    </MenuItem>
+                                                    <MenuItem Text="item 1.2.1.1.2">
+                                    
+                                                    </MenuItem>
+                                                </MenuItems>
+                                            </MenuItem>
+                                        </MenuItems>
+                                    </MenuItem>
+                                    <MenuItem Text="item 1.2.2"></MenuItem>
+                                </MenuItems>
+                            </MenuItem>
+                        </MenuItems>
+                    </MenuItem>
+                    <MenuItem Text="item 2">
+                        <MenuItems>
+                            <MenuItem Text="item 2.1"></MenuItem>
+                        </MenuItems>
+                    </MenuItem>
+
+                    <MenuItem Text="item 3"></MenuItem>
+                </MenuItems>
+            </Menu>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+@code {
+
+    public void LogText(MenuItem item)
+    {
+        Console.WriteLine($"Logging from item with text: {item.Text}");
+    }
+
+}

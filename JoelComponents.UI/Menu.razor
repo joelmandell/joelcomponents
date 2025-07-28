@@ -1,0 +1,7 @@
+﻿<div @onmouseleave="ClearAllExpandedItems" class="menubar" role="menubar">
+    <CascadingValue Name="IsTopMenu" Value="true" TValue="bool">
+        <CascadingValue Name="Menu" Value="this" TValue="Menu" IsFixed="true">
+            @ChildContent
+        </CascadingValue>
+    </CascadingValue>
+</div>
