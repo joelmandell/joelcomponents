@@ -11,14 +11,17 @@
         * If there is nested MenuItems with one or more MenuItem components it will be expanded to right.
 
 This solution is kinda like a hybrid variant, with both CSS and a JS-function for blur (when for example pressing Esc, on the keyboard).
-I tried to just use Blazor. I think it would be possible by Cascading and keeping track on children and so on, that is by only using Blazor and for example with model binding and only rendering on hover on submenuitems and so on.
+I tried to just use Blazor. I think it would be possible by Cascading and keeping track on children and so on, that is by only using Blazor and for example with model binding and only rendering on hover on submenuitems.
+I went with not manually building a render tree but instead went the "declarative" way, as it seemed to  doing the job.
 
-But it seemed quite fragile with the "tabbing"-experience and **ARIA**-support. So I went for CSS combined with one JS-function. But most of the events are done within the razor components.
+When trying to only use Blazor all the way, it seemed quite fragile with the "tabbing"-experience and **ARIA**-support. So I went for CSS combined with one JS-function. But most of the events are done within the razor components.
 Tabbing should work mostly okay.
 
 I added two parameters for the Menu-component for OnClick or OnKeyEnter-events.
 
 ### Things I wanted to implement
+
+During the course of the hours after me sending the link to this repo, some or one of the below mentioned features may be added.
 
 1. Some bUnit tests would have been nice.
 2. Template-tag for customizing the rendered text in a menu-item
