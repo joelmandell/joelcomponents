@@ -30,6 +30,7 @@ ul ul li:focus > div,
 ul ul li:hover > div {
     outline:dotted;
     background-color: #536179;
+    cursor: pointer;
 }
 
 .has-submenu > div > span.arrow::after {

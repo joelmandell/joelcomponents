@@ -2,7 +2,7 @@
 @using JoelComponents.UI
 
 <PageTitle>Failing Menu</PageTitle>
-
+<h3>FailingMenu not inside a Menu root container.</h3>
 <ErrorBoundary>
     <ChildContent>
         <MenuItems>
@@ -13,3 +13,24 @@
         <p>@context.Message</p>
     </ErrorContent>
 </ErrorBoundary>
+
+@if (!string.IsNullOrEmpty(HtmlContent))
+{
+    <h2>This is the failing code:</h2>
+    @((MarkupString)HtmlContent)
+}
+
+@code {
+
+    private string HtmlContent { get; set; } = "";
+
+    protected override void OnParametersSet()
+    {
+        HtmlContent = Markdown.ToHtml(@"```
+<MenuItems>
+    <MenuItem Text=""Hello friend""/>
+</MenuItems>");
+        
+    }
+
+}

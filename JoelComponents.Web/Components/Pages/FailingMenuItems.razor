@@ -1,0 +1,56 @@
+@page "/FailingMenuItemsMultipleRoot"
+@using JoelComponents.UI
+<h3>FailingMenuItems Duplicate toplevel root.</h3>
+<ErrorBoundary>
+    <ChildContent>
+        <Menu>
+            <MenuItems>
+                <!--
+                    This should fail, we cannot have <MenuItems> in top level root <MenuItems>.
+                    It can be only one.
+                -->
+                <MenuItems>
+                    <MenuItem Text="Bug"></MenuItem>
+                </MenuItems>
+                <MenuItem Text="Start">
+
+                </MenuItem>
+            </MenuItems>
+        </Menu>
+    </ChildContent>
+    <ErrorContent>
+        <p>@context.Message</p>
+    </ErrorContent>
+</ErrorBoundary>
+
+@if (!string.IsNullOrEmpty(HtmlContent))
+{
+    <h2>This is the failing code:</h2>
+    @((MarkupString)HtmlContent)
+}
+
+@code {
+
+    private string HtmlContent { get; set; } = "";
+
+    protected override void OnParametersSet()
+    {
+        HtmlContent = Markdown.ToHtml(@"```
+<Menu>
+    <MenuItems>
+        <!--
+            This should fail, we cannot have <MenuItems> in top level root <MenuItems>.
+            It can be only one.
+        -->
+        <MenuItems>
+            <MenuItem Text=""Bug""></MenuItem>
+        </MenuItems>
+        <MenuItem Text=""Start"">
+
+        </MenuItem>
+    </MenuItems>
+</Menu>");
+        
+    }
+
+}

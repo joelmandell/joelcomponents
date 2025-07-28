@@ -1,0 +1,49 @@
+@page "/FailingMenuItems"
+@using JoelComponents.UI
+<h3>FailingMenuItems Duplicate in MenuRoot</h3>
+<ErrorBoundary>
+    <ChildContent>
+        <Menu>
+            <!--This should fail, we cannot have multiple <MenuItems> in root container <Menu>-->
+            <MenuItems>
+                <MenuItem Text="Bug"></MenuItem>
+            </MenuItems>
+            <MenuItems>
+                <MenuItem Text="Start">
+
+                </MenuItem>
+            </MenuItems>
+        </Menu>
+    </ChildContent>
+    <ErrorContent>
+        <p>@context.Message</p>
+    </ErrorContent>
+</ErrorBoundary>
+
+@if (!string.IsNullOrEmpty(HtmlContent))
+{
+    <h2>This is the failing code:</h2>
+    @((MarkupString)HtmlContent)
+}
+
+@code {
+
+    private string HtmlContent { get; set; } = "";
+
+    protected override void OnParametersSet()
+    {
+        HtmlContent = Markdown.ToHtml(@"```
+<Menu>
+    <!--This should fail, we cannot have multiple <MenuItems> in root container <Menu>-->
+    <MenuItems>
+        <MenuItem Text=""Bug""></MenuItem>
+    </MenuItems>
+    <MenuItems>
+        <MenuItem Text=""Start"">
+
+        </MenuItem>
+    </MenuItems>
+</Menu>");
+    }
+
+}

@@ -11,4 +11,8 @@
       <ProjectReference Include="..\JoelComponents.UI\JoelComponents.UI.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Markdig" Version="0.41.3" />
+    </ItemGroup>
+
 </Project>

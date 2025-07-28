@@ -27,7 +27,9 @@
         </div>
         @if (HasSubmenu)
         {
-            @ChildContent
+            <CascadingValue Value="false" Name="ParentIsMenuItems" IsFixed="true">
+                @ChildContent
+            </CascadingValue>
         }
     </CascadingValue>
 </li>

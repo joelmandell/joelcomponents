@@ -1,3 +1,4 @@
+using JoelComponents.UI.Models;
 using Microsoft.AspNetCore.Components;
 
 namespace JoelComponents.UI;
@@ -6,6 +7,7 @@ public partial class Menu
 {
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+    
     /// <summary>
     /// Pass a void method that takes <see cref="MenuItem"/> as a param.
     /// This triggers on a <c>Mouse click</c>. On MenuItem is a Tag property that can be filtered
@@ -26,6 +28,9 @@ public partial class Menu
     public ElementReference? ElementReference { get; set; }
 
     private List<IMenuItem> _expandedPath = new();
+    
+    // Each Menu instance has its own state tracker.
+    private readonly MenuState _menuState = new();
     
     /// <summary>
     /// For tracking the path of hoveredItems.
