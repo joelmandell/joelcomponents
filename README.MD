@@ -19,12 +19,19 @@ Tabbing should work mostly okay.
 
 I added two parameters for the Menu-component for OnClick or OnKeyEnter-events.
 
+### How to test
+
+There is some components in the JoelComponents.Web-projects.
+On the Home-page there is some event handlers just attached.
+There is some pages with erroneous usage of the compoent (they are also as **bUnit tests**.)
+
+And there is two usages of the Menu component for testing on the Weather-page (with a menu item for fetching "weather").
+
 ### Things I wanted to implement
 
 During the course of the hours after me sending the link to this repo, some or one of the below mentioned features may be added.
 
-1. Some bUnit tests would have been nice.
-2. Template-tag for customizing the rendered text in a menu-item
-3. A MenuIcon-component that could be prepend or appended.
-4. An property/setting for changing it from horizontal to vertical (responsive ui)
-5. A MenuTheme-container or something like that to theme the colors and fonts with css variables.
+1. Template-tag for customizing the rendered text in a menu-item
+2. MenuIcon-component that could be prepend or appended.
+3. An property/setting for changing it from horizontal to vertical (responsive ui)
+4. A MenuTheme-container or something like that to theme the colors and fonts with css variables.
