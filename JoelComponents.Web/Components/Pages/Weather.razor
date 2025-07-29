@@ -49,6 +49,62 @@ else
     </table>
 }
 
+<h2>A little bit more nested menu.</h2>
+
+<Menu>
+    <MenuItems>
+        <MenuItem Text="Start"></MenuItem>
+        <MenuItem Text="item 1">
+            <MenuItems>
+                <MenuItem Text="item 1.1"></MenuItem>
+                <MenuItem Text="item 1.2">
+                    <MenuItems>
+                        <MenuItem Text="item 1.2.1">
+                            <MenuItems>
+                                <MenuItem Text="item 1.2.1.1">
+                                    <MenuItems>
+                                        <MenuItem Text="item 1.2.1.1.1">
+                                            <MenuItems>
+                                                <MenuItem Text="item 1.2.1.1.1.1">
+                                                    <MenuItems>
+                                                        <MenuItem Text="item 1.2.1.1.1.1.1">
+                                                            <MenuItems>
+                                                                <MenuItem Text="item 1.2.1.1.1.1.1.1">
+                                                                    <MenuItems>
+                                                                        <MenuItem Text="item 1.2.1.1.1.1.1.1.1">
+                                                                            <MenuItems>
+                                                                                <MenuItem Text="item 1.2.1.1.1.1.1.1.1.1"></MenuItem>
+                                                                                <MenuItem Text="item 1.2.1.1.1.1.1.1.1.2"></MenuItem>
+                                                                            </MenuItems>
+                                                                        </MenuItem>
+                                                                    </MenuItems>
+                                                                </MenuItem>
+                                                            </MenuItems>
+                                                        </MenuItem>
+                                                    </MenuItems>
+                                                </MenuItem>
+                                            </MenuItems>
+                                        </MenuItem>
+                                        <MenuItem Text="item 1.2.1.1.2"></MenuItem>
+                                    </MenuItems>
+                                </MenuItem>
+                            </MenuItems>
+                        </MenuItem>
+                        <MenuItem Text="item 1.2.2"></MenuItem>
+                    </MenuItems>
+                </MenuItem>
+            </MenuItems>
+        </MenuItem>
+        <MenuItem Text="item 2">
+            <MenuItems>
+                <MenuItem Text="item 2.1"></MenuItem>
+            </MenuItems>
+        </MenuItem>
+        <MenuItem Text="item 3"></MenuItem>
+    </MenuItems>
+</Menu>
+
+
 @code {
     
     private WeatherForecast[]? forecasts;

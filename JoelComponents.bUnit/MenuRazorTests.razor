@@ -9,7 +9,20 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 @code {
 
     [Fact]
-    public void ShouldThrowIfMultipleMenuItemsInRoot()
+    public void ShouldThrow_If_NotIn_A_MenuComponent()
+    {
+        this.Services.AddJoelComponents();
+
+        Assert.Throws<InvalidOperationException>( () => {
+            //Arrange
+            var cut = Render(@<MenuItems>
+                                 <MenuItem Text="Start"></MenuItem>
+                             </MenuItems>);
+        });
+    }
+    
+    [Fact]
+    public void ShouldThrow_If_Multiple_MenuItems_In_Root()
     {
         this.Services.AddJoelComponents();
 
