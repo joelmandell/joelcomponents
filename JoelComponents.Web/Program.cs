@@ -1,5 +1,6 @@
 using JoelComponents.Components;
 using JoelComponents.Services;
+using JoelComponents.UI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddHttpClient();
+//AddJoelComponents. This is needed to inject dependencies :)
+builder.Services.AddJoelComponents();
 builder.Services.AddSingleton<CatApiService>();
 builder.Services.AddSingleton<PicSumService>();
 builder.Services.AddSingleton<PersonNotExistService>();

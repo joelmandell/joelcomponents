@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace JoelComponents.UI;
+namespace JoelComponents.UI.Components.Menu;
 
-public partial class MenuItem
+public partial class MenuItem(MenuJsInterop menuJsInterop)
 {
     [CascadingParameter(Name="Menu")]
     public Menu? ParentMenu { get; set; }
@@ -31,8 +31,6 @@ public partial class MenuItem
     /// </summary>
     [Parameter]
     public string? Tag { get; set; }
-
-    private MenuJsInterop? _menuJsInterop;
     
     private ElementReference? MenuItemReference { get; set; }
     
@@ -44,7 +42,6 @@ public partial class MenuItem
     
     protected override void OnInitialized()
     {
-        _menuJsInterop = new(JsRuntime);
         base.OnInitialized();
     }
 
@@ -61,7 +58,7 @@ public partial class MenuItem
 
         if (e.Key == "Escape")
         {
-            await Task.FromResult(_menuJsInterop?.BlurElement(this.MenuItemReference));
+            await Task.FromResult(menuJsInterop?.BlurElement(this.MenuItemReference));
             ParentMenu?.ClearAllExpandedItems();
         }
         
@@ -71,7 +68,7 @@ public partial class MenuItem
             {
                 _ = InvokeAsync(() =>  parentMenu.OnKeyEnter.InvokeAsync(this));
 
-                await Task.FromResult(_menuJsInterop?.BlurElement(this.MenuItemReference));
+                await Task.FromResult(menuJsInterop?.BlurElement(this.MenuItemReference));
                 ParentMenu?.ClearAllExpandedItems();
             }
         }
@@ -82,7 +79,7 @@ public partial class MenuItem
         if (ParentMenu is { OnClick: { HasDelegate: true } } parentMenu)
         {
             _ = InvokeAsync(() =>  parentMenu.OnClick.InvokeAsync(this));
-            await Task.FromResult(_menuJsInterop?.BlurElement(this.MenuItemReference));
+            await Task.FromResult(menuJsInterop?.BlurElement(this.MenuItemReference));
             ParentMenu?.ClearAllExpandedItems();
         }
     }

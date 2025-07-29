@@ -15,4 +15,10 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <AdditionalFiles Include="Components\Menu\Menu.razor" />
+      <AdditionalFiles Include="Components\Menu\MenuItem.razor" />
+      <AdditionalFiles Include="Components\Menu\MenuItems.razor" />
+    </ItemGroup>
+
 </Project>

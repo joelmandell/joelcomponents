@@ -1,7 +1,7 @@
 using JoelComponents.UI.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace JoelComponents.UI;
+namespace JoelComponents.UI.Components.Menu;
 
 public partial class MenuItems
 {

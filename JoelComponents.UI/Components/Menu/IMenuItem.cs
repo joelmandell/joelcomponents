@@ -1,4 +1,4 @@
-namespace JoelComponents.UI;
+namespace JoelComponents.UI.Components.Menu;
 
 public interface IMenuItem
 {
