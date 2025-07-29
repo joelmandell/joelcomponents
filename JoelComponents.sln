@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoelComponents.Web", "JoelC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoelComponents.UI", "JoelComponents.UI\JoelComponents.UI.csproj", "{4FF5BFA7-F858-4EA0-B140-F88F88A46072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoelComponents.bUnit", "JoelComponents.bUnit\JoelComponents.bUnit.csproj", "{A790B7BF-2656-4BAA-B081-B19F1B747E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{4FF5BFA7-F858-4EA0-B140-F88F88A46072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FF5BFA7-F858-4EA0-B140-F88F88A46072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FF5BFA7-F858-4EA0-B140-F88F88A46072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A790B7BF-2656-4BAA-B081-B19F1B747E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A790B7BF-2656-4BAA-B081-B19F1B747E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A790B7BF-2656-4BAA-B081-B19F1B747E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A790B7BF-2656-4BAA-B081-B19F1B747E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
