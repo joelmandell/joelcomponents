@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<CompilerService>();
 //AddJoelComponents. This is needed to inject dependencies :)
 builder.Services.AddJoelComponents();
 builder.Services.AddSingleton<CatApiService>();

@@ -1,0 +1,83 @@
+@page "/Playground"
+@using JoelComponents.Services
+@inject CompilerService Compiler
+
+<h3>Playground</h3>
+
+<h3>Dynamic Blazor Component Compiler</h3>
+<p>
+    Write a Blazor component using declarative <strong>Razor syntax</strong>.
+</p>
+
+<div class="form-group">
+    <textarea class="form-control" @bind="componentCode" @bind:event="oninput" rows="15" style="font-family: monospace;"></textarea>
+</div>
+
+<button class="btn btn-primary my-2" @onclick="CompileAndRender">Compile and Render</button>
+
+<hr />
+
+<h4>Rendered Output:</h4>
+
+<div class="p-3 border" style="min-height: 100px;">
+    @if (errorMessages.Any())
+    {
+        <div class="alert alert-danger">
+            <strong>Compilation Failed:</strong>
+            @foreach (var error in errorMessages)
+            {
+                <p class="mb-0">@error</p>
+            }
+        </div>
+    }
+    else if (compiledComponentType != null)
+    {
+        <DynamicComponent Type="compiledComponentType" />
+    }
+    else
+    {
+        <p><em>Output will appear here after compilation.</em></p>
+    }
+</div>
+
+
+@code {
+    private string componentCode = @"
+@* This is a declarative Razor component! *@
+
+<h3>Hello from a Dynamic Component!</h3>
+<p>Current count: @currentCount</p>
+
+<button class=""btn btn-success"" @onclick=""IncrementCount"">Click me</button>
+
+    @code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    }
+    ";
+
+    private Type? compiledComponentType;
+    private string[] errorMessages = Array.Empty<string>();
+
+    private void CompileAndRender()
+    {
+        errorMessages = Array.Empty<string>();
+        compiledComponentType = null;
+
+        // Call the new method in the service
+        var (type, errors) = Compiler.CompileDeclarativeComponent(componentCode);
+
+        if (errors.Any())
+        {
+            errorMessages = errors;
+        }
+        else
+        {
+            compiledComponentType = type;
+        }
+    }
+}
