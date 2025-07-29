@@ -9,6 +9,7 @@
     @onmouseenter="HandleMouseEnter" 
     @onkeydown="HandleKeyUp"
     @onclick="HandleOnClick"
+    @onclick:stopPropagation="true"
     @onkeydown:stopPropagation="true"
     @onmouseout="@(() => IsFocused = false)"
     @onmouseleave="HandleMouseLeave" 
